@@ -1,0 +1,23 @@
+<!--
+input - food
+input - calories for the food item
+input - submit
+-->
+
+<h1>Food Calories of the Day</h1>
+
+<a ng-href="/#/food"></a>
+
+<form ng-submit="post()">
+  <input type="text" ng-model="food">
+  <input type="text" ng-model="calories">
+  <button type="submit">Submit</button>
+</form>
+
+<div>Food: {{food}}</div>
+<div>Calories: {{calories}}</div>
+<div ng-repeat='entry in container'>
+  <div>{{entry.food}} {{entry.calories}}</div>
+  
+</div>
+<div>You had a total of {{total}} Calories! you fat shit.</div>
