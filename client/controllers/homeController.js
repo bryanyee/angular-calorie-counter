@@ -18,8 +18,4 @@ function homeController($scope, foodFactory) {
     $scope.total += Number($scope.calories);   
   }
 
-
-
-
-
 }
