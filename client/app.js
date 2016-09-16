@@ -5,13 +5,13 @@ app.config(configFunction);
 
 function configFunction($routeProvider, $locationProvider) {
   $routeProvider
-    .when('/home', {
-      templateUrl: './partials/home.html',
-      controller: 'homeController'
+    .when('/', {
+      templateUrl: 'client/partials/login.html',
+      controller: 'loginController'
     }),
   $routeProvider
-    .when('/', {
-      templateUrl: './partials/login.html',
-      controller: 'loginController'
+    .when('/home', {
+      templateUrl: 'client/partials/home.html',
+      controller: 'homeController'
     })
 }
