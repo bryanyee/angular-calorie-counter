@@ -1,20 +1,36 @@
 const express = require('express');
 const path = require('path');
-
+const createUser = require('./database/controllers/userController.js');
+const verifyUser = require('./database/controllers/userController.js')
 const app = express();
+const bodyParser = require('body-parser');
 
-// app.use(express.static('client'));
+const mongoose = require('mongoose');
+const uri = 'mongodb://localhost/calorie';
+mongoose.connect(uri);
+const db = mongoose.connection;
+db.once('open', ()=>{
+  console.log('connected db');
+})
+
+
+app.use(bodyParser());
+
+app.use(express.static('client'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'index.html'));
-})
+});
 
-app.get(/.(js|html|css)$/, (req, res, next) => {
-  console.log(req.url)
-  res.sendFile(path.join(__dirname, 'client', req.url), (err) => {
-    if(err) res.sendStatus(err.status);
-  });
-})
+//insert//retreieve from db
+app.post('/signup', createUser, (req, res) => {
+  console.log('finduser works');
+  res.end();
+});
+
+app.post('/login', verifyUser, (req, res) => {
+  res.end();
+});
 
 app.use((req, res) => {
   res.sendStatus(404);

@@ -10,7 +10,6 @@ function homeController($scope, foodFactory) {
   $scope.total = 0; 
 
   $scope.post = function() {
-    // counterFactory.addFoodItem($scope.food, $scope.calories);
     const entry = {}; 
     entry.food = $scope.food;
     entry.calories = $scope.calories; 
